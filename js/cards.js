@@ -20,19 +20,19 @@ const CARDS = {
     f2_1: [
         "Energy",
         x=>`Increase max energy by <span class="green">+2</span>`,
-        x=>data[x].maxEnergy<20,
+        x=>data[x].maxEnergy<=20,
         x=>{data[x].maxEnergy+=2},
     ],
     f2_2: [
-        "Energy",
+        "More Energy",
         x=>`Increase max energy by <span class="green">+3</span>`,
-        x=>data[x].maxEnergy>=20&&data[x].maxEnergy<50,
+        x=>data[x].maxEnergy>20&&data[x].maxEnergy<=50,
         x=>{data[x].maxEnergy+=3},
     ],
     f2_3: [
-        "Energy",
+        "Even More Energy",
         x=>`Increase max energy by <span class="green">+5</span>`,
-        x=>data[x].maxEnergy>=50,
+        x=>data[x].maxEnergy>=30,
         x=>{data[x].maxEnergy+=5},
     ],
 }
