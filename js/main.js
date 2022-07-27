@@ -165,7 +165,7 @@ function generateRandomCards() {
     for (let i = 0; i < 3; i++) {
         let [p,e] =  [ac[0][Math.floor(Math.random()*ac[0].length)],ac[1][Math.floor(Math.random()*ac[1].length)]]
         if (round == 5) {
-            [p,e] = [Object.keys(CARDS).filter(x=>x.charAt()=="m")[Math.floor(Math.random()*Object.keys(CARDS).filter(x=>x.charAt()=="m").length)],Object.keys(CARDS).filter(x=>x.charAt()=="m")[Math.floor(Math.random()*Object.keys(CARDS).filter(x=>x.charAt()=="m").length)]]
+            [p,e] = [Object.keys(CARDS).filter(x=>x.charAt()=="m")[Math.floor(Math.random()*5)],Object.keys(CARDS).filter(x=>x=="f1_1")[0]]
         }
         let [cp,ce] = [CARDS[p],CARDS[e]]
 
