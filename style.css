@@ -32,6 +32,17 @@ body {
     background-color: white;
 }
 
+@keyframes menuimage {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    } 
+}
+
+#menuimage { animation: menuimage 3s infinite ease-in-out }
+
 button {
     font-size: 25px;
     border: solid 3px black;
