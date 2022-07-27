@@ -37,38 +37,65 @@ const CARDS = {
     ],
     f3_1: [
         "Minimum Incrementer",
-        x=>`Increase ${['your',"enemy's"][x]} minimum of side by <span class="green">+1</span>`,
+        x=>`Increase ${['your',"enemy's"][x]} minimum number of side by <span class="green">+1</span>`,
         x=>data[x].min_s<data[x].max_s&&data[x].min_s<10,
         x=>{data[x].min_s+=1},
     ],
     f3_2: [
         "Minimum Increaser",
-        x=>`Increase ${['your',"enemy's"][x]} minimum of side by <span class="green">+2</span>`,
+        x=>`Increase ${['your',"enemy's"][x]} minimum number of side by <span class="green">+2</span>`,
         x=>data[x].min_s<data[x].max_s&&data[x].min_s>=5&&data[x].min_s<35,
         x=>{data[x].min_s+=2},
     ],
     f3_3: [
         "Minimum Increaser+",
-        x=>`Increase ${['your',"enemy's"][x]} minimum of side by <span class="green">+3</span>`,
+        x=>`Increase ${['your',"enemy's"][x]} minimum number of side by <span class="green">+3</span>`,
         x=>data[x].min_s<data[x].max_s&&data[x].min_s>=30,
         x=>{data[x].min_s+=3},
     ],
     f4_1: [
         "Maximum Incrementer",
-        x=>`Increase ${['your',"enemy's"][x]} maximum of side by <span class="green">+1</span>`,
+        x=>`Increase ${['your',"enemy's"][x]} maximum number of side by <span class="green">+1</span>`,
         x=>data[x].max_s<12,
         x=>{data[x].max_s+=1},
     ],
     f4_2: [
         "Maximum Increaser",
-        x=>`Increase ${['your',"enemy's"][x]} maximum of side by <span class="green">+2</span>`,
+        x=>`Increase ${['your',"enemy's"][x]} maximum number of side by <span class="green">+2</span>`,
         x=>data[x].max_s>=8&&data[x].max_s<35,
         x=>{data[x].max_s+=2},
     ],
     f4_3: [
         "Maximum Increaser+",
-        x=>`Increase ${['your',"enemy's"][x]} maximum of side by <span class="green">+3</span>`,
+        x=>`Increase ${['your',"enemy's"][x]} maximum number of side by <span class="green">+3</span>`,
         x=>data[x].max_s>=30,
         x=>{data[x].max_s+=3},
+    ],
+    f5_1: [
+        "Side Translation",
+        x=>`Increase ${['your',"enemy's"][x]} minimum & maximum number of side by <b class='green'>1</b>`,
+        x=>Math.random()>1/2,
+        x=>{
+            data[x].min_s += 1
+            data[x].max_s += 1
+        },
+    ],
+    f5_2: [
+        "Side Expansion",
+        x=>`Increase ${['your',"enemy's"][x]} minimum & maximum number of side by <b class='green'>2</b>`,
+        x=>Math.random()>1/2&&data[x].min_s>=20,
+        x=>{
+            data[x].min_s += 2
+            data[x].max_s += 2
+        },
+    ],
+    f5_3: [
+        "Side Overflow",
+        x=>`Increase ${['your',"enemy's"][x]} minimum & maximum number of side by <b class='green'>4</b>`,
+        x=>Math.random()>1/2&&data[x].min_s>=50,
+        x=>{
+            data[x].min_s += 4
+            data[x].max_s += 4
+        },
     ],
 }
