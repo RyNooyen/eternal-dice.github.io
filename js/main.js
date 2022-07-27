@@ -165,11 +165,11 @@ function generateRandomCards() {
         cs.innerHTML += `
         <div class="card table_center" onclick="chooseCard('${p}','${e}')">
             <div class="card_p">
-                ${cp[0]}<br>
+                <span style="${cp[4]}">${cp[0]}<br>
                 <span style="font-size: 18px">${cp[1](0)}</span>
             </div>
             <div class="card_e">
-                ${ce[0]}<br>
+                <span style="${ce[4]}">${ce[0]}<br>
                 <span style="font-size: 18px">${ce[1](1)}</span>
             </div>
         </div>
