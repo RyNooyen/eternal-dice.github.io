@@ -14,13 +14,18 @@ const POPUP = {
     <button onclick="removePopup();pass()">YES</button><button onclick="removePopup()">NO</button>
     `,
     tutorial0: _=>`
-    Do you want to see the tutorial?<br>
+    Do you want to see the tutorial? (There's <b>ALOT</b> of new things)<br>
     <button onclick="setPopup(POPUP.tutorial1())">Of course!</button><button onclick="removePopup();start()">Nah.</button>
     `,
     tutorial1: _=>`
     <h2>Tutorial</h2>
 
-    This game isn't for beginners. Please play <a href='https://mrredshark77.github.io/Endless-Dice/'>RedShark's version</a> first. <br><br>
+    This game isn't for beginners. Please play <a href='https://mrredshark77.github.io/Endless-Dice/'>RedShark's version</a> first.<br><br>
+    All the cards have been changed, the total amount of cards currently is ${CARDS.length}.<br>
+    At round 5, you will choose between the <span style="color: yellow">major</span> cards, you will only get to choose these once and they will impact your gameplay dramatically!<br><br>
+    Minimum & maximum number of sides have changed to add a softcap-like value called progress.<br>
+    For every 75 sides, the amount of progress to get a side increments.<br>
+    This means if you have 30 of a side, one progress is needed and if you have 75 of a side, two progress is needed.<br><br>
     <button onclick="removePopup();start()">Okay!</button>
     `,
 }
