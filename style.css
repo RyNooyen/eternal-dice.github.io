@@ -41,7 +41,7 @@ body {
     } 
 }
 
-#menuimage { animation: menuimage 3s infinite ease-in-out }
+#menuimage { animation: menuimage 3s infinite cubic-bezier(0.42, -0.3, 0.58, 1.4) }
 
 button {
     font-size: 25px;
