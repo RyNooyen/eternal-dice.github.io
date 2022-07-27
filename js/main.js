@@ -162,7 +162,7 @@ function generateRandomCards() {
         for (j in ks) if (CARDS[ks[j]][2](t[i])) ac[i].push(ks[j])
     }
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 3; i++) {
         let [p,e] = [ac[0][Math.floor(Math.random()*ac[0].length)],ac[1][Math.floor(Math.random()*ac[1].length)]]
         let [cp,ce] = [CARDS[p],CARDS[e]]
 
