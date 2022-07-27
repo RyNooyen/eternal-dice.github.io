@@ -241,14 +241,14 @@ function makeMove(move="player") {
             if (dice.type == "attack") {
                 od.health = Math.max(od.health-p,0)
                 if (od.cards.includes("m1")) {
-                    od.mult = Math.log10(od.health)
+                    od.mult = Math.log10(od.health) + 1
                 }
                 dmg += p
             }
             else if (dice.type == "heal") {
                 d.health += p
                 if (d.cards.includes("m1")) {
-                    d.mult = Math.log10(od.health)
+                    d.mult = Math.log10(od.health) + 1
                 }
                 heal += p
             }
