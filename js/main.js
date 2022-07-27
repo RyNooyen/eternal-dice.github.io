@@ -233,13 +233,23 @@ function makeMove(move="player") {
 
         for (x in dices) {
             var dice = dices[x]
+            
+            if (dice.type == "normal" && d.cards.includes("m4")) {
+                dice.type = ["attack","heal"][Math.round(Math.random())]
+            }
 
             if (dice.type == "attack") {
                 od.health = Math.max(od.health-p,0)
+                if (od.cards.includes("m1")) {
+                    od.mult = Math.log10(od.health)
+                }
                 dmg += p
             }
             else if (dice.type == "heal") {
                 d.health += p
+                if (d.cards.includes("m1")) {
+                    d.mult = Math.log10(od.health)
+                }
                 heal += p
             }
             else if (d.cards.includes("o2") && dice.type == "normal") {
