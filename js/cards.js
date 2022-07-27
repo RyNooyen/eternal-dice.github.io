@@ -1,7 +1,7 @@
 const CARDS = {
     m1: [
-        "Template",
-        x=>`Template`,
+        "Healthy Multiplier",
+        x=>`${['Your',"Enemy's"][x]} multiplier will always be set to log10(Health)`,
         x=>false,
         x=>{},
         "color: yellow"
@@ -21,8 +21,8 @@ const CARDS = {
         "color: yellow"
     ],
     m4: [
-        "Template",
-        x=>`Template`,
+        "Natural Effects",
+        x=>`When ${['you use',"the enemy uses"][x]} a normal dice, it will randomly choose between health and damage.`,
         x=>false,
         x=>{},
         "color: yellow"
