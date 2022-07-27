@@ -1,4 +1,39 @@
 const CARDS = {
+    m1: [
+        "Template",
+        x=>`Template`,
+        x=>false,
+        x=>{},
+        "color: yellow"
+    ],
+    m2: [
+        "Template",
+        x=>`Template`,
+        x=>false,
+        x=>{},
+        "color: yellow"
+    ],
+    m3: [
+        "Template",
+        x=>`Template`,
+        x=>false,
+        x=>{},
+        "color: yellow"
+    ],
+    m4: [
+        "Template",
+        x=>`Template`,
+        x=>false,
+        x=>{},
+        "color: yellow"
+    ],
+    m5: [
+        "Template",
+        x=>`Template`,
+        x=>false,
+        x=>{},
+        "color: yellow"
+    ],
     f1_1: [
         "Nothing",
         x=>`Kills your favorite anime characters`,
