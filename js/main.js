@@ -22,7 +22,9 @@ const newData = _=>{
             crit: 0.15,
 
             min_s: 1,
+            min_s_prog:0,
             max_s: 6,
+            max_s_prog:0,
 
             cards: [],
         },
