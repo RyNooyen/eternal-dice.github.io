@@ -8,13 +8,13 @@ const CARDS = {
     f1_2: [
         "Nothinger",
         x=>`It's too late to run...`,
-        x=>data.round>=10&&data.round<30,
+        x=>data.round>10&&data.round<=30,
         x=>{},
     ],
     f1_3: [
         "Nothingest",
         x=>`CONSOLE: IP successfully sent to Democratic Republic of Korea`,
-        x=>data.round>=30,
+        x=>data.round>30,
         x=>{},
     ],
     f2_1: [
@@ -26,7 +26,7 @@ const CARDS = {
     f2_2: [
         "More Energy",
         x=>`Increase ${['your',"enemy's"][x]} max energy by <span class="green">3</span>`,
-        x=>data[x].maxEnergy>20&&data[x].maxEnergy<=50,
+        x=>data[x].maxEnergy>=20&&data[x].maxEnergy<=50,
         x=>{data[x].maxEnergy+=3},
     ],
     f2_3: [
@@ -101,13 +101,13 @@ const CARDS = {
     f6_1: [
         "Multiplier",
         x=>`Increase ${['your',"enemy's"][x]} multiplier by <b class='green'>0.3</b>`,
-        x=>data[x].multiplier<10,
+        x=>data[x].multiplier<=10,
         x=>{data[x].multiplier+=0.3},
     ],
     f6_2: [
         "Extra Multiplier",
         x=>`Increase ${['your',"enemy's"][x]} multiplier by <b class='green'>0.5</b>`,
-        x=>data[x].multiplier>=4&&data[x].multiplier<30,
+        x=>data[x].multiplier>=4&&data[x].multiplier<=30,
         x=>{data[x].multiplier+=0.5},
     ],
     f6_3: [
