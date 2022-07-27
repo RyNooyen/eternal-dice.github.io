@@ -17,7 +17,7 @@ function createTextPopupParticle(text,x,y,up=false) {
     },2000)
 }
 
-function progCheck() {
+function progCheck(x) {
     var temp = Math.floor(data[x].min_s_prog/(Math.floor(data[x].min_s/100)+1))
     data[x].min_s_prog -= temp
     data[x].min_s += temp
