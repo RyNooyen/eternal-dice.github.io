@@ -1,12 +1,12 @@
 const POPUP = {
     win: _=>`
-    <h2>You jave won this Round!</h2>
+    <h2>You have won this Round! (${data.round})</h2>
     Pick <b>ONE</b> of the following cards:<br>
     <div id="pick_cards"></div>
     `,
     lose: _=>`
     <h2>GAME OVER!</h2>
-    You lost at round ${data.round}!<br>
+    You lost at Round ${data.round}!<br>
     <button onclick="tryAgain()">Try again?</button>
     `,
     passConfirm: _=>`
@@ -20,7 +20,7 @@ const POPUP = {
     tutorial1: _=>`
     <h2>Tutorial</h2>
 
-    This game isn't for beginners. Please play RedShark's version first at https://mrredshark77.github.io/Endless-Dice/. <br><br>
+    This game isn't for beginners. Please play <a href='https://mrredshark77.github.io/Endless-Dice/'>RedShark's version</a> first. <br><br>
     <button onclick="removePopup();start()">Okay!</button>
     `,
 }
