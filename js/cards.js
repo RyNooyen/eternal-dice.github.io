@@ -7,15 +7,15 @@ const CARDS = {
         "color: yellow"
     ],
     m2: [
-        "Template",
-        x=>`Template`,
+        "Critical Error",
+        x=>`Both you and your enemy can only do crit attacks, but your multiplier increases like the enemy's.`,
         x=>false,
         x=>{},
         "color: yellow"
     ],
     m3: [
-        "Template",
-        x=>`Template`,
+        "Immortality's side effects",
+        x=>`Enemy is healed to max health every turn, but you're garanteed to crit when dealing damage.`,
         x=>false,
         x=>{},
         "color: yellow"
