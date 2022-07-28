@@ -82,7 +82,12 @@ function shuffle(array) {
 function nextRound() {
     data.round++
     data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*(data.round>20?1.4:1.2))
-    data.enemy.mult += data.round>20?1:0.25
+    if (data.player.cards.includes("m2")) {    
+        data.enemy.mult += data.round>20?1:0.25
+        data.player.mult += data.round>20?1:0.25
+    } else {
+        data.enemy.mult += data.round>20?1:0.25
+    }
     data.enemy.health = data.enemy.maxHealth
     data.e_grid = {}
 
@@ -226,11 +231,13 @@ function makeMove(move="player") {
         if (data.player.cards.includes("m3")) {
         data.player.critical = 1
     }
-        if (Math.random() < d.crit) {
+        if ((data.player.cards.includes("m2")) { 
+            crit = "Critical! "
+            p *= 2
+        } else if (Math.random() < d.crit ) {
             crit = "Critical! "
             p *= 2
         }
-
         g[d.pick[0]] = undefined
         g[d.pick[1]] = undefined
 
