@@ -223,6 +223,9 @@ function makeMove(move="player") {
         var dices = [g[d.pick[0]],g[d.pick[1]]]
         var p = Math.floor(d.product*d.mult)
         var dmg = 0, heal = 0, crit = "", s = [dices[0].type,dices[1].type].includes("scrambler")?3:1
+        if (data.player.cards.includes("m2")) {
+        data.player.critical = 1
+    }
         if (Math.random() < d.crit) {
             crit = "Critical! "
             p *= 2
@@ -304,6 +307,9 @@ function pass() {
         resetOne("player")
 
         setTimeout(autoEnemyMove,1000)
+    if (data.player.cards.includes("m2")) {
+        data.enemy.health = Math.floor(data.enemy.maxHealth)
+    }
     }
 }
 
