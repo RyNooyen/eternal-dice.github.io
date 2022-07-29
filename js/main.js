@@ -231,7 +231,7 @@ function makeMove(move="player") {
         if (data.player.cards.includes("m3")) {
         data.player.critical = 1
     }
-        if ((data.player.cards.includes("m2")) { 
+        if (data.player.cards.includes("m2")) { 
             crit = "Critical! "
             p *= 2
         } else if (Math.random() < d.crit ) {
