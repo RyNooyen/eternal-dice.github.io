@@ -1,7 +1,7 @@
 const CARDS = {
     m1: [
         "Healthy Multiplier",
-        x=>`${['Your',"Enemy's"][x]} multiplier will always be set to log10(Health)`,
+        x=>`Your multiplier will always be set to log10(Health)`,
         x=>false,
         x=>{},
         "color: yellow"
@@ -15,14 +15,14 @@ const CARDS = {
     ],
     m3: [
         "Immortality's side effects",
-        x=>`Enemy is healed to max health every turn, but you're garanteed to crit when dealing damage.`,
+        x=>`Enemy is healed to max health every turn, but you're guaranteed to crit when dealing damage.`,
         x=>false,
         x=>{},
         "color: yellow"
     ],
     m4: [
         "Natural Effects",
-        x=>`When ${['you use',"the enemy uses"][x]} a normal dice, it will randomly choose between health and damage.`,
+        x=>`When you use a normal dice, it will randomly choose between health and damage.`,
         x=>false,
         x=>{},
         "color: yellow"
