@@ -83,11 +83,9 @@ function nextRound() {
     data.round++
     data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*(data.round>20?1.4:1.2))
     if (data.player.cards.includes("m2")) {    
-        data.enemy.mult += data.round>20?1:0.25
         data.player.mult += data.round>20?1:0.25
-    } else {
-        data.enemy.mult += data.round>20?1:0.25
     }
+    data.enemy.mult += data.round>20?1:0.25
     data.enemy.health = data.enemy.maxHealth
     data.e_grid = {}
 
@@ -228,13 +226,7 @@ function makeMove(move="player") {
         var dices = [g[d.pick[0]],g[d.pick[1]]]
         var p = Math.floor(d.product*d.mult)
         var dmg = 0, heal = 0, crit = "", s = [dices[0].type,dices[1].type].includes("scrambler")?3:1
-        if (data.player.cards.includes("m3")) {
-        data.player.critical = 1
-    }
-        if (data.player.cards.includes("m2")) { 
-            crit = "Critical! "
-            p *= 2
-        } else if (Math.random() < d.crit ) {
+        if (data.player.cards.includes("m2") || d.cards.includes("m3") || Math.random() < d.crit) { 
             crit = "Critical! "
             p *= 2
         }
@@ -314,9 +306,9 @@ function pass() {
         resetOne("player")
 
         setTimeout(autoEnemyMove,1000)
-    if (data.player.cards.includes("m3")) {
-        data.enemy.health = Math.floor(data.enemy.maxHealth)
-    }
+        if (data.player.cards.includes("m3")) {
+            data.enemy.health = Math.floor(data.enemy.maxHealth)
+        }
     }
 }
 
