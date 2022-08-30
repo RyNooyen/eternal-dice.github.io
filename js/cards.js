@@ -36,21 +36,21 @@ const CARDS = {
     ],
     f1_1: [
         "Nothing",
-        x=>`Kills your favorite anime characters`,
+        x=>`Literally nothing`,
         x=>data.round<10,
         x=>{},
         ""
     ],
     f1_2: [
         "Nothinger",
-        x=>`It's too late to run...`,
+        x=>`Still literally nothing`,
         x=>data.round>10&&data.round<=30,
         x=>{},
         ""
     ],
     f1_3: [
         "Nothingest",
-        x=>`CONSOLE: IP successfully sent to Democratic Republic of Korea`,
+        x=>`N O T H I N G`,
         x=>data.round>30,
         x=>{},
         ""
