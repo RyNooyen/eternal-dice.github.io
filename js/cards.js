@@ -14,7 +14,7 @@ const CARDS = {
         "color: yellow"
     ],
     m3: [
-        "Immortality's side effects",
+        "Sub-immortality",
         x=>`Enemy is healed to max health every turn, but you're guaranteed to crit when dealing damage.`,
         x=>false,
         x=>{},
@@ -37,21 +37,7 @@ const CARDS = {
     f1_1: [
         "Nothing",
         x=>`Literally nothing`,
-        x=>data.round<10,
-        x=>{},
-        ""
-    ],
-    f1_2: [
-        "Nothinger",
-        x=>`Still literally nothing`,
-        x=>data.round>10&&data.round<=30,
-        x=>{},
-        ""
-    ],
-    f1_3: [
-        "Nothingest",
-        x=>`N O T H I N G`,
-        x=>data.round>30,
+        x=>!(x=="enemy"&&data.round>=10),
         x=>{},
         ""
     ],
@@ -97,7 +83,7 @@ const CARDS = {
         ""
     ],
     f3_3: [
-        "Minimum Increaser+",
+        "Minimum Enlarger",
         x=>`Increase ${['your',"enemy's"][x]} minimum number of side progress by <span class="green">3</span>`,
         x=>data[x].min_s<data[x].max_s&&data[x].min_s>=30,
         x=>{
@@ -111,7 +97,7 @@ const CARDS = {
         x=>`Increase ${['your',"enemy's"][x]} maximum number of side progress by <span class="green">1</span>`,
         x=>data[x].max_s<12,
         x=>{
-            data[x].max_s_prog+=1
+             data[x].max_s_prog+=1
             progCheck(x)
         },
         ""
@@ -127,7 +113,7 @@ const CARDS = {
         ""
     ],
     f4_3: [
-        "Maximum Increaser+",
+        "Maximum Enlarger",
         x=>`Increase ${['your',"enemy's"][x]} maximum number of side progress by <span class="green">3</span>`,
         x=>data[x].max_s>=30,
         x=>{
@@ -190,4 +176,10 @@ const CARDS = {
         x=>{data[x].multiplier+=1},
         ""
     ],
+    f7_1: [
+        "Medicine",
+        x=>`Multiplies ${['your',"enemy's"][x]} health by <b class='green'>1.25</b>`,
+        x=>true, //need to sort this out when i add 2 and 3
+        x=>{data[x].health *= 1.25; if (data[x].maxHealth) data[x].maxHealth *= 1.25}
+    ]
 }
