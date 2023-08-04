@@ -158,22 +158,22 @@ const CARDS = {
     f6_1: [
         "Multiplier",
         x=>`Increase ${['your',"enemy's"][x]} multiplier by <b class='green'>0.3</b>`,
-        x=>data[x].multiplier<=10&&!data[x].cards.includes("m1"),
-        x=>{data[x].multiplier+=0.3},
+        x=>data[x].mult<=10&&!data[x].cards.includes("m1"),
+        x=>{data[x].mult+=0.3},
         ""
     ],
     f6_2: [
         "Extra Multiplier",
         x=>`Increase ${['your',"enemy's"][x]} multiplier by <b class='green'>0.5</b>`,
-        x=>data[x].multiplier>=4&&data[x].multiplier<=30&&!data[x].cards.includes("m1"),
-        x=>{data[x].multiplier+=0.5},
+        x=>data[x].mult>=4&&data[x].mult<=30&&!data[x].cards.includes("m1"),
+        x=>{data[x].mult+=0.5},
         ""
     ],
     f6_3: [
         "Extreme Multiplier",
         x=>`Increase ${['your',"enemy's"][x]} multiplier by <b class='green'>1</b>`,
-        x=>data[x].multiplier>=10&&!data[x].cards.includes("m1"),
-        x=>{data[x].multiplier+=1},
+        x=>data[x].mult>=10&&!data[x].cards.includes("m1"),
+        x=>{data[x].mult+=1},
         ""
     ],
     f7_1: [
