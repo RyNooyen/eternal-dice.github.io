@@ -276,11 +276,11 @@ function makeMove(move="player") {
                 od.poison.active = true
                 od.poison.times = d.poison.maxTimes
                 od.poison.damage = Math.max(Math.floor(p/d.poison.maxTimes),1)
-                if (d.cards.includes("p3")) {
+                /*if (d.cards.includes("p3")) {
                     od.poison.times -= 1
                     dmg += od.poison.damage
                     od.health = Math.max(od.health-od.poison.damage,0)
-                }
+                }*/
             }
             else if (d.cards.includes("o2") && dice.type == "normal") {
                 od.health = Math.max(od.health-Math.ceil(move=="player"?p/4:p/2),0)
