@@ -13,6 +13,10 @@ const POPUP = {
     Are you sure you want to give up your turn? You have unspent energy.<br>
     <button onclick="removePopup();pass()">YES</button><button onclick="removePopup()">NO</button>
     `,
+    poison: _ =>`
+    Template
+    <button onclick="removePopup()">Okay!</button>
+    `,
     tutorial0: _=>`
     Do you want to see the tutorial? (There's <b>ALOT</b> of new things)<br>
     <button onclick="setPopup(POPUP.tutorial1())">Of course!</button><button onclick="removePopup();start()">Nah.</button>
@@ -25,7 +29,7 @@ const POPUP = {
     At round 5, you will choose between the <span style="color: yellow">major</span> cards, you will only get to choose these once and they will impact your gameplay dramatically!<br><br>
     Minimum & maximum number of sides have changed to add a softcap-like value called progress.<br>
     For every 75 sides, the amount of progress to get a side increments.<br>
-    This means if you have 30 of a side, one progress is needed and if you have 75 of a side, two progress is needed.<br><br>
+    For example, if you have 30 of a side, one progress is needed and if you have 75 of a side, two progress is needed.<br><br>
     <button onclick="removePopup();start()">Okay!</button>
     `,
 }

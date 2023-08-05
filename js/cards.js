@@ -34,6 +34,7 @@ const CARDS = {
         x=>{},
         "color: yellow"
     ],
+
     f1_1: [
         "Nothing",
         x=>`Literally nothing`,
@@ -182,14 +183,27 @@ const CARDS = {
     g1: [
         "Transplant",
         x=>`Takes a third of ${["the enemy's",'your'][x]} health and gives it to ${['you',"the enemy"][x]}`,
-        x=>Math.random()<1/5 && data[x].health > 1000,
+        x=>Math.random()<1/4 && data[x].health > 1000,
         x=>{
             var a = x
-            var b = x == 'player' ? 'player' : 'enemy'
+            var b = x != 'player' ? 'player' : 'enemy'
             data[a].health += data[b].health/3
             if (a == 'enemy' && data[a].maxHealth < data[a].health) data[a].maxHealth = data[a].health
             data[b].health -= data[b].health/3
+            if (b == 'enemy') data[b].maxHealth -= data[b].maxHealth/3
         },
-        "color: green"
+        "color: lime"
+    ],
+
+    c1: [
+        "Cursed Multiplier",
+        x=>`Multiplies both of your side progress by <b class="green">2</b>, but your multiplier is divided by <b class="red">4</b>`,
+        x=>x=="player"&&Math.random()<1/4,
+        x=>{
+            data[x].min_s_prog *= 2
+            data[x].min_s_prog *= 2
+
+            data[x].mult /= 4
+        }
     ]
 }

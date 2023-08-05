@@ -82,9 +82,7 @@ function shuffle(array) {
 function nextRound() {
     data.round++
     data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*(data.round>20?1.4:1.2))
-    if (data.player.cards.includes("m2")) {    
-        data.player.mult += data.round>20?1:0.25
-    }
+    if (data.player.cards.includes("m2")) data.player.mult += data.round>20?1:0.25
     data.enemy.mult += data.round>20?1:0.25
     data.enemy.health = data.enemy.maxHealth
     data.e_grid = {}
@@ -106,8 +104,8 @@ function nextRound() {
     }
 
     if (data.round > 20) {
-        data.enemy.min_s += 1
-        data.enemy.max_s += randomInt(1,3)
+        data.enemy.min_s_prog += 1
+        data.enemy.max_s_prog += randomInt(1,3)
     }
 
     document.getElementById("conclusion").style.top = "-50%"
@@ -118,6 +116,10 @@ function nextRound() {
     updateAvSlots("e_grid")
     updateGridDices("p_grid")
     updateGridDices("e_grid")
+
+    if (data.round == 20) {
+        setPopup(POPUP.poison())
+    }
 }
 
 function chooseCard(p,e) {
