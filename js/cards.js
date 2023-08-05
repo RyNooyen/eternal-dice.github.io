@@ -179,6 +179,8 @@ const CARDS = {
         x=>data[x].health <= 5000,
         x=>{data[x].health *= 1.3; if (data[x].maxHealth) data[x].maxHealth *= 1.3}
     ],
+    //f8 be something normal
+    //f9-10 (11?) poison-based
 
     g1: [
         "Transplant",

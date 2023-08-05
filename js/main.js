@@ -359,6 +359,7 @@ function resetOne(id) {
     data[id].pick = [0,0]
     data[id].pickStep = 0
     data[id].product = 1
+    data[id].poison.active = false
 
     updateGridDices("p_grid")
     updateGridDices("e_grid")
@@ -442,7 +443,7 @@ function autoEnemyMove() {
         }
 
         if (de.energy > 0) {
-            if (rgd.length > 0 ? hd.length >= 2 && de.energy >= rgd[0].energy + rgd[1].energy && trueNoNormal && (Math.random() < 0.75 || tmp.av_e_slots.length == 0) : false) {
+            if ((data.enemy.health > data.enemy.poison.damage || !data.enemy.poison.active) && rgd.length > 0 ? hd.length >= 2 && de.energy >= rgd[0].energy + rgd[1].energy && trueNoNormal && (Math.random() < 0.75 || tmp.av_e_slots.length == 0) : false) {
                 data.enemyReady = true
 
                 de.pick = [rgd[0].pos,rgd[1].pos]
