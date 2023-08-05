@@ -243,7 +243,7 @@ function makeMove(move="player") {
 
         var dices = [g[d.pick[0]],g[d.pick[1]]]
         var p = Math.floor(d.product*d.mult)
-        var dmg = 0, heal = 0, crit = "", s = [dices[0].type,dices[1].type].includes("scrambler")?3:1
+        var dmg = 0, heal = 0, psn = 0, crit = "", s = [dices[0].type,dices[1].type].includes("scrambler")?3:1
         if (data.player.cards.includes("m2") || d.cards.includes("m3") || Math.random() < d.crit) { 
             crit = "Critical! "
             p *= 2
