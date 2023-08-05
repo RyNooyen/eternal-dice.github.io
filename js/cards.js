@@ -1,9 +1,9 @@
 const CARDS = {
     m1: [
         "Healthy Multiplier",
-        x=>`Your multiplier will always be set to log10(Health)`,
+        x=>`Your multiplier will always be set to log<sub>50</sub>(Health)`,
         x=>false,
-        x=>{data[x].mult = Math.log10(data[x].health) + 1},
+        x=>{data[x].mult = (Math.log(data[x].health) / Math.log(50)) + 1},
         "color: yellow"
     ],
     m2: [
