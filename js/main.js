@@ -89,10 +89,10 @@ function nextRound() {
     data.enemy.health = data.enemy.maxHealth
     data.e_grid = {}
 
-    if (data.player.cards.includes("curse2")) {
+    /*if (data.player.cards.includes("curse2")) {
         data.player.health = Math.floor(data.player.health*1.1)
         data.enemy.mult *= 1.05
-    }
+    }*/
     
     resetTwo("player")
     resetTwo("enemy")
@@ -525,10 +525,13 @@ function spawnRandomDice(id,update=false) {
 
     grid[pos] = {pos: pos, value: randomInt(d.min_s,d.max_s), type: ["normal","attack","heal"][tp], energy: [1,2,2][tp]}
 
-    if (d.cards.includes('d7') && Math.random() < .15) { // 
+    /*if (d.cards.includes('d7') && Math.random() < .15) { // 
         grid[pos].type = "scrambler"
         grid[pos].energy = 2
-    }
+    }*/
+
+    if (d.cards.includes('m5') && grid[pos].type == "normal") grid[pos].energy = 0
+
 
     updateAvSlots(id)
     if (update) updateGridDices(id)

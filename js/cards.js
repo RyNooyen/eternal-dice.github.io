@@ -8,28 +8,28 @@ const CARDS = {
     ],
     m2: [
         "Critical Error",
-        x=>`Both you and your enemy can only do crit attacks, but your multiplier increases like the enemy's.`,
+        x=>`Both you and your enemy can only do crit attacks, but your multiplier increases like the enemy's`,
         x=>false,
         x=>{},
         "color: yellow"
     ],
     m3: [
         "Sub-immortality",
-        x=>`Enemy is healed to max health every turn, but you're guaranteed to crit when dealing damage.`,
+        x=>`Enemy is healed to max health every turn, but you're guaranteed to crit when dealing damage`,
         x=>false,
         x=>{},
         "color: yellow"
     ],
     m4: [
         "Natural Effects",
-        x=>`When you use a normal dice, it will randomly choose between health and damage.`,
+        x=>`When you use a normal dice, it will randomly choose between health and damage`,
         x=>false,
         x=>{},
         "color: yellow"
     ],
     m5: [
-        "Template",
-        x=>`Template`,
+        "Eternal Waste",
+        x=>`Normal dice will not use any energy`,
         x=>false,
         x=>{},
         "color: yellow"
@@ -178,8 +178,20 @@ const CARDS = {
     ],
     f7_1: [
         "Medicine",
-        x=>`Multiplies ${['your',"enemy's"][x]} health by <b class='green'>1.25</b>`,
-        x=>true, //need to sort this out when i add 2 and 3
-        x=>{data[x].health *= 1.25; if (data[x].maxHealth) data[x].maxHealth *= 1.25}
+        x=>`Multiplies ${['your',"enemy's"][x]} health by <b class='green'>1.1</b>`,
+        x=>data[x].health > 50000,
+        x=>{data[x].health *= 1.1; if (data[x].maxHealth) data[x].maxHealth *= 1.1}
+    ],
+    f7_2: [
+        "Doctor",
+        x=>`Multiplies ${['your',"enemy's"][x]} health by <b class='green'>1.2</b>`,
+        x=>data[x].health > 1000,
+        x=>{data[x].health *= 1.2; if (data[x].maxHealth) data[x].maxHealth *= 1.2}
+    ],
+    f7_3: [
+        "Hospital",
+        x=>`Multiplies ${['your',"enemy's"][x]} health by <b class='green'>1.3</b>`,
+        x=>data[x].health <= 5000,
+        x=>{data[x].health *= 1.3; if (data[x].maxHealth) data[x].maxHealth *= 1.3}
     ]
 }
