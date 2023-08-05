@@ -35,7 +35,7 @@ const CARDS = {
         "color: yellow"
     ],
 
-    f1_1: [
+    f1: [
         "Nothing",
         x=>`Literally nothing`,
         x=>!(x=="enemy"&&data.round>=10),
@@ -44,7 +44,7 @@ const CARDS = {
     f2_1: [
         "Energy",
         x=>`Increase ${['your',"enemy's"][x]} max energy by <span class="green">2</span>`,
-        x=>data[x].maxEnergy<=20,
+        x=>data[x].maxEnergy<=30,
         x=>{data[x].maxEnergy+=2}
     ],
     f2_2: [
@@ -179,7 +179,16 @@ const CARDS = {
         x=>data[x].health <= 5000,
         x=>{data[x].health *= 1.3; if (data[x].maxHealth) data[x].maxHealth *= 1.3}
     ],
-    //f8 be something normal
+    f8: [
+        "Clear your mind",
+        x=>`Clears your dice grid`,
+        x=>true,
+        x=>{
+            data.p_grid = {}
+            updateAvSlots("p_grid")
+            updateGridDices("p_grid")
+        }
+    ],
     //f9-10 (11?) poison-based
 
     g1: [
