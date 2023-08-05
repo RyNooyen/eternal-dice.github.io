@@ -3,7 +3,7 @@ const CARDS = {
         "Healthy Multiplier",
         x=>`Your multiplier will always be set to log10(Health)`,
         x=>false,
-        x=>{},
+        x=>{data[x].mult = Math.log10(data[x].health) + 1},
         "color: yellow"
     ],
     m2: [
@@ -38,29 +38,25 @@ const CARDS = {
         "Nothing",
         x=>`Literally nothing`,
         x=>!(x=="enemy"&&data.round>=10),
-        x=>{},
-        ""
+        x=>{}
     ],
     f2_1: [
         "Energy",
         x=>`Increase ${['your',"enemy's"][x]} max energy by <span class="green">2</span>`,
         x=>data[x].maxEnergy<=20,
-        x=>{data[x].maxEnergy+=2},
-        ""
+        x=>{data[x].maxEnergy+=2}
     ],
     f2_2: [
         "More Energy",
         x=>`Increase ${['your',"enemy's"][x]} max energy by <span class="green">3</span>`,
         x=>data[x].maxEnergy>=20&&data[x].maxEnergy<=50,
-        x=>{data[x].maxEnergy+=3},
-        ""
+        x=>{data[x].maxEnergy+=3}
     ],
     f2_3: [
         "Even More Energy",
         x=>`Increase ${['your',"enemy's"][x]} max energy by <span class="green">5</span>`,
         x=>data[x].maxEnergy>=30,
-        x=>{data[x].maxEnergy+=5},
-        ""
+        x=>{data[x].maxEnergy+=5}
     ],
     f3_1: [
         "Minimum Incrementer",
@@ -69,8 +65,7 @@ const CARDS = {
         x=>{
             data[x].min_s_prog+=1
             progCheck(x)
-        },
-        ""
+        }
     ],
     f3_2: [
         "Minimum Increaser",
@@ -79,8 +74,7 @@ const CARDS = {
         x=>{
             data[x].min_s_prog+=2
             progCheck(x)
-        },
-        ""
+        }
     ],
     f3_3: [
         "Minimum Enlarger",
@@ -89,8 +83,7 @@ const CARDS = {
         x=>{
             data[x].min_s_prog+=3
             progCheck(x)
-        },
-        ""
+        }
     ],
     f4_1: [
         "Maximum Incrementer",
@@ -99,8 +92,7 @@ const CARDS = {
         x=>{
              data[x].max_s_prog+=1
             progCheck(x)
-        },
-        ""
+        }
     ],
     f4_2: [
         "Maximum Increaser",
@@ -109,8 +101,7 @@ const CARDS = {
         x=>{
             data[x].max_s_prog+=2
             progCheck(x)
-        },
-        ""
+        }
     ],
     f4_3: [
         "Maximum Enlarger",
@@ -119,8 +110,7 @@ const CARDS = {
         x=>{
             data[x].max_s_prog+=3
             progCheck(x)
-        },
-        ""
+        }
     ],
     f5_1: [
         "Side Translation",
@@ -130,8 +120,7 @@ const CARDS = {
             data[x].min_s_prog += 1
             data[x].max_s_prog += 1
             progCheck(x)
-        },
-        ""
+        }
     ],
     f5_2: [
         "Side Expansion",
@@ -141,8 +130,7 @@ const CARDS = {
             data[x].min_s_prog += 2
             data[x].max_s_prog += 2
             progCheck(x)
-        },
-        ""
+        }
     ],
     f5_3: [
         "Side Overflow",
@@ -152,29 +140,25 @@ const CARDS = {
             data[x].min_s_prog += 4
             data[x].max_s_prog += 4
             progCheck(x)
-        },
-        ""
+        }
     ],
     f6_1: [
         "Multiplier",
         x=>`Increase ${['your',"enemy's"][x]} multiplier by <b class='green'>0.3</b>`,
         x=>data[x].mult<=10&&!data[x].cards.includes("m1"),
-        x=>{data[x].mult+=0.3},
-        ""
+        x=>{data[x].mult+=0.3}
     ],
     f6_2: [
         "Extra Multiplier",
         x=>`Increase ${['your',"enemy's"][x]} multiplier by <b class='green'>0.5</b>`,
         x=>data[x].mult>=4&&data[x].mult<=30&&!data[x].cards.includes("m1"),
-        x=>{data[x].mult+=0.5},
-        ""
+        x=>{data[x].mult+=0.5}
     ],
     f6_3: [
         "Extreme Multiplier",
         x=>`Increase ${['your',"enemy's"][x]} multiplier by <b class='green'>1</b>`,
         x=>data[x].mult>=10&&!data[x].cards.includes("m1"),
-        x=>{data[x].mult+=1},
-        ""
+        x=>{data[x].mult+=1}
     ],
     f7_1: [
         "Medicine",
@@ -193,5 +177,19 @@ const CARDS = {
         x=>`Multiplies ${['your',"enemy's"][x]} health by <b class='green'>1.3</b>`,
         x=>data[x].health <= 5000,
         x=>{data[x].health *= 1.3; if (data[x].maxHealth) data[x].maxHealth *= 1.3}
+    ],
+
+    g1: [
+        "Transplant",
+        x=>`Takes a third of ${["the enemy's",'your'][x]} health and gives it to ${['you',"the enemy"][x]}`,
+        x=>Math.random()<1/5 && data[x].health > 1000,
+        x=>{
+            var a = x
+            var b = x == 'player' ? 'player' : 'enemy'
+            data[a].health += data[b].health/3
+            if (a == 'enemy' && data[a].maxHealth < data[a].health) data[a].maxHealth = data[a].health
+            data[b].health -= data[b].health/3
+        },
+        "color: green"
     ]
 }
