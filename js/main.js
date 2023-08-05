@@ -6,6 +6,7 @@ const newData = _=>{
         move: "player",
         enemyReady: false,
         end: false,
+        poison: false,
 
         round: 1,
 
@@ -17,6 +18,13 @@ const newData = _=>{
             health: 100,
             energy: 10,
             maxEnergy: 10,
+
+            poison: {
+                active: false,
+                damage: 0,
+                times: 0,
+                maxTimes: 4,
+            },
 
             mult: 1,
             crit: 0.15,
@@ -37,6 +45,13 @@ const newData = _=>{
             maxHealth: 50,
             energy: 0,
             maxEnergy: 10,
+
+            poison: {
+                active: false,
+                damage: 0,
+                times: 0,
+                maxTimes: 4,
+            },
 
             mult: 1,
             crit: 0.15,
@@ -119,6 +134,7 @@ function nextRound() {
 
     if (data.round == 20) {
         setPopup(POPUP.poison())
+        data.poison = true
     }
 }
 
@@ -256,21 +272,41 @@ function makeMove(move="player") {
                 }
                 heal += p
             }
+            else if (dice.type == "poison") {
+                od.poison.active = true
+                od.poison.times = d.poison.maxTimes
+                od.poison.damage = Math.max(Math.floor(p/d.poison.maxTimes),1)
+                if (d.cards.includes("p3")) {
+                    od.poison.times -= 1
+                    dmg += od.poison.damage
+                    od.health = Math.max(od.health-od.poison.damage,0)
+                }
+            }
             else if (d.cards.includes("o2") && dice.type == "normal") {
                 od.health = Math.max(od.health-Math.ceil(move=="player"?p/4:p/2),0)
                 dmg += Math.ceil(move=="player"?p/4:p/2)
             }
         }
 
-        if (dices[0].type == dices[1].type || ([dices[0].type,dices[1].type].includes("scrambler") && ![dices[0].type,dices[1].type].includes("normal"))) {
-            if (dices[0].type == "attack" || dices[1].type == "attack") {
+        if (dices[0].type == dices[1].type) {
+            if (dices[0].type == "attack") {
                 od.health = Math.max(od.health-p*s,0)
                 dmg += p*s
             }
-            else if (dices[0].type == "heal" || dices[1].type == "heal") {
+            else if (dices[0].type == "heal") {
                 d.health += p*s
                 heal += p*s
             }
+            else if (dices[0].type == "poison") {
+                od.poison.times *= 2
+            }
+        }
+
+        if (d.poison.active == true) {
+            psn += d.poison.damage
+            d.health -= d.poison.damage
+            d.poison.times -= 1
+            if (d.poison.times == 0) { d.poison.active = false }
         }
         
         d.energyCos = 0
@@ -284,6 +320,9 @@ function makeMove(move="player") {
         if (heal > 0) {
             createTextPopupParticle(`<span class="green">${crit+"+"+format(heal)}</span>`,dh.x+dh.width/2,oh.y)
         }
+        if (psn > 0) {
+            createTextPopupParticle(`<span style="color: #90c">${"-"+format(psn)}</span>`,dh.x+dh.width/2,dh.y)
+        }
 
         updateGridDices("p_grid")
         updateGridDices("e_grid")
@@ -291,7 +330,7 @@ function makeMove(move="player") {
         updateAvSlots("p_grid")
         updateAvSlots("e_grid")
 
-        if (od.health <= 0) {
+        if (od.health <= 0 || d.health <= 0) {
             data.end = true
             setTimeout(conclusion,1000)
         }
@@ -331,6 +370,7 @@ function resetTwo(id) {
     data[id].pick = [0,0]
     data[id].pickStep = 0
     data[id].product = 1
+    data[id].poison.active = false
 }
 
 function conclusion() {
@@ -467,7 +507,7 @@ function updateGridDices(id) {
         document.getElementById("player_pass").style.display = data.move == "player" ? "inline" : "none"
     }
 
-    document.getElementById(dd+"_health").innerHTML = "Health: " + format(d.health)
+    document.getElementById(dd+"_health").innerHTML = "Health: " + format(d.health) + (d.poison.active ? `<br><span style="color: #90c">(Poisoned: ${d.poison.damage} * ${d.poison.times})</span>` : "")
     document.getElementById(dd+"_energy").innerHTML = format(d.energy) + " / " + format(d.maxEnergy)
     document.getElementById(dd+"_mult").innerHTML = d.mult.toFixed(2)
     document.getElementById(dd+"_result").innerHTML = (d.pickStep > 1 || (id=="e_grid" && data.enemyReady)) ? format(Math.floor(d.product*d.mult)) : "?"
@@ -523,9 +563,9 @@ function spawnRandomDice(id,update=false) {
     var d = data[stringToString[id][0]]
     var s = tmp[stringToString[id][1]]
     var pos = s[Math.floor(Math.random()*s.length)]
-    var tp = Math.floor(Math.random()*3)
+    var tp = data.poison ? Math.floor(Math.random()*7/2) : Math.floor(Math.random()*7/2)
 
-    grid[pos] = {pos: pos, value: randomInt(d.min_s,d.max_s), type: ["normal","attack","heal"][tp], energy: [1,2,2][tp]}
+    grid[pos] = {pos: pos, value: randomInt(d.min_s,d.max_s), type: ["normal","attack","heal","poison"][tp], energy: [1,2,2,3][tp]}
 
     /*if (d.cards.includes('d7') && Math.random() < .15) { // 
         grid[pos].type = "scrambler"

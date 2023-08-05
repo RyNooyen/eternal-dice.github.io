@@ -168,6 +168,13 @@ br {
     background-color: #0a0;
 }
 
+.picked_dice.poison,
+.grid-dice.poison {
+    border-style: solid;
+    border-color: #440044;
+    background-color: #90c;
+}
+
 .picked_dice.scrambler,
 .grid-dice.scrambler {
     border-style: solid;
