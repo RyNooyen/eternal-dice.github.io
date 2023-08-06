@@ -73,7 +73,7 @@ const CARDS = {
     f3_2: [
         "Minimum Increaser",
         x=>`Increase ${['your',"enemy's"][x]} minimum number of side progress by <span class="green">2</span>`,
-        x=>data[x].min_s<data[x].max_s&&data[x].min_s>=5&&data[x].min_s<35,
+        x=>data[x].min_s+1<data[x].max_s&&data[x].min_s>=5&&data[x].min_s<35,
         x=>{
             data[x].min_s_prog+=2
             progCheck(x)
@@ -82,7 +82,7 @@ const CARDS = {
     f3_3: [
         "Minimum Enlarger",
         x=>`Increase ${['your',"enemy's"][x]} minimum number of side progress by <span class="green">3</span>`,
-        x=>data[x].min_s<data[x].max_s&&data[x].min_s>=30,
+        x=>data[x].min_2<data[x].max_s&&data[x].min_s>=30,
         x=>{
             data[x].min_s_prog+=3
             progCheck(x)
@@ -137,11 +137,11 @@ const CARDS = {
     ],
     f5_3: [
         "Side Overflow",
-        x=>`Increase ${['your',"enemy's"][x]} minimum & maximum number of side progress by <b class='green'>4</b>`,
+        x=>`Increase ${['your',"enemy's"][x]} minimum & maximum number of side progress by <b class='green'>3</b>`,
         x=>Math.random()>1/2&&data[x].min_s>=50,
         x=>{
-            data[x].min_s_prog += 4
-            data[x].max_s_prog += 4
+            data[x].min_s_prog += 3
+            data[x].max_s_prog += 3
             progCheck(x)
         }
     ],
