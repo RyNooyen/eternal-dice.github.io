@@ -156,7 +156,7 @@ function chooseCard(p,e) {
     nextRound()
 }
 
-function tp(scramble=false) {
+function tpf(scramble=false) {
     if (data.poison && !scramble) {
         var x = Math.random()*8/2
         if (x > 3.5) return 4
@@ -179,8 +179,9 @@ function scrambleDice(grid) {
                 var gd = document.getElementById(grid+"_"+id).getBoundingClientRect()
                 createTextPopupParticle("Scrambled!",gd.x+gd.width/2,gd.y+gd.height/2,true)
                 if (gg !== undefined) if (gg.type !== "scrambler") {
-                    gg.type = ["normal","attack","heal","poison"][tp(true)]
-                    gg.energy = [1,2,2,3][tp(true)]
+                    var tp = tpf(true)
+                    gg.type = ["normal","attack","heal","poison"][tp]
+                    gg.energy = [1,2,2,3][tp]
                 }
             }
         }
@@ -581,7 +582,8 @@ function spawnRandomDice(id,update=false) {
     var s = tmp[stringToString[id][1]]
     var pos = s[Math.floor(Math.random()*s.length)]
 
-    grid[pos] = {pos: pos, value: randomInt(d.min_s,d.max_s), type: ["normal","attack","heal","scrambler","poison"][tp()], energy: [1,2,2,2,3][tp()]}
+    var tp = tpf()
+    grid[pos] = {pos: pos, value: randomInt(d.min_s,d.max_s), type: ["normal","attack","heal","scrambler","poison"][tp], energy: [1,2,2,2,3][tp]}
 
     if (d.cards.includes('m5') && grid[pos].type == "normal") grid[pos].energy = 0
 
