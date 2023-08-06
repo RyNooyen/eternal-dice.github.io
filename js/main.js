@@ -158,9 +158,9 @@ function chooseCard(p,e) {
 
 function tp(scramble=false) {
     if (data.poison && !scramble) {
-        var x = Math.floor(Math.random()*8/2)
+        var x = Math.random()*8/2
         if (x > 3.5) return 4
-        return x
+        return Math.floor(x)
     } else if (data.scrambler) {
         return Math.floor(Math.random()*7/2)
     }
@@ -179,8 +179,8 @@ function scrambleDice(grid) {
                 var gd = document.getElementById(grid+"_"+id).getBoundingClientRect()
                 createTextPopupParticle("Scrambled!",gd.x+gd.width/2,gd.y+gd.height/2,true)
                 if (gg !== undefined) if (gg.type !== "scrambler") {
-                    gg.type = ["normal","attack","heal","poison"][tp()]
-                    gg.energy = [1,2,2,3][tp()]
+                    gg.type = ["normal","attack","heal","poison"][tp(true)]
+                    gg.energy = [1,2,2,3][tp(true)]
                 }
             }
         }
