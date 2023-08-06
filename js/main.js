@@ -123,7 +123,7 @@ function nextRound() {
 
     if (data.round > 20) {
         data.enemy.min_s_prog += 1
-        data.enemy.max_s_prog += randomInt(1,3)
+        data.enemy.max_s_prog += randomInt(1,2)
     }
 
     document.getElementById("conclusion").style.top = "-50%"
