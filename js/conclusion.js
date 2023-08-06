@@ -14,11 +14,13 @@ const POPUP = {
     <button onclick="removePopup();pass()">YES</button><button onclick="removePopup()">NO</button>
     `,
     scrambler: _ =>`
-    Template
+    Congratulations! You made it to round 10!<br>
+    As a reward, you have now unlocked the scrambler dice!<br>
+    Every turn it will change all the dice next to it, allowing for more possibilities!<br><br>
     <button onclick="removePopup()">Okay!</button>
     `,
     poison: _ =>`
-    Template
+    Template<br><br>
     <button onclick="removePopup()">Okay!</button>
     `,
     tutorial0: _=>`
