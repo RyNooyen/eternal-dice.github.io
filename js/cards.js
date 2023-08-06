@@ -235,6 +235,7 @@ const CARDS = {
             data[x].min_s_prog *= 2
 
             data[x].mult /= 4
-        }
+        },
+        "color: red"
     ]
 }
