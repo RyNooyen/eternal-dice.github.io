@@ -161,7 +161,7 @@ function tpf(scramble=false) {
         var x = Math.random()*8/2
         if (x > 3.5) return 4
         return Math.floor(x)
-    } else if (data.scrambler) {
+    } else if ((data.poison && scramble) || data.scrambler && (!scramble)) {
         return Math.floor(Math.random()*7/2)
     }
     return Math.floor(Math.random()*3)
