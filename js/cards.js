@@ -233,6 +233,7 @@ const CARDS = {
         x=>{
             data[x].min_s_prog *= 2
             data[x].min_s_prog *= 2
+            progCheck()
 
             data[x].mult /= 4
         },
