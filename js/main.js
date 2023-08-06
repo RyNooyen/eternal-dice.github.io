@@ -137,7 +137,7 @@ function nextRound() {
 
     if (data.round == 10) {
         setPopup(POPUP.scrambler())
-        data.poison = true
+        data.scrambler = true
     } else if (data.round == 20) {
         setPopup(POPUP.poison())
         data.poison = true
