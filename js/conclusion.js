@@ -16,11 +16,15 @@ const POPUP = {
     scrambler: _ =>`
     Congratulations! You made it to round 10!<br>
     As a reward, you have now unlocked the scrambler dice!<br>
-    Every turn it will change all the dice next to it, allowing for more possibilities!<br><br>
+    Every turn it will change all the dice next to it, allowing for more possibilities!<br>
     <button onclick="removePopup()">Okay!</button>
     `,
     poison: _ =>`
-    Template<br><br>
+    Well done on making it to round 20!<br>
+    However, the enemy will start automatically gaining side progress!<br>
+    To combat this, you have the new poison dice!<br>
+    Poison dice can apply a poison effect to the enemy, and causes them to get damage dealt to them every time they use dice!<br>
+    This will come in useful as the enemy AI will not use dice if the next usage would kill them from the poison.<br>
     <button onclick="removePopup()">Okay!</button>
     `,
     tutorial0: _=>`
