@@ -6,6 +6,7 @@ const newData = _=>{
         move: "player",
         enemyReady: false,
         end: false,
+        scrambler: false,
         poison: false,
 
         round: 1,
@@ -23,7 +24,8 @@ const newData = _=>{
                 active: false,
                 damage: 0,
                 times: 0,
-                maxTimes: 4,
+                maxTimes: 6,
+                mult: 1
             },
 
             mult: 1,
@@ -50,7 +52,8 @@ const newData = _=>{
                 active: false,
                 damage: 0,
                 times: 0,
-                maxTimes: 4,
+                maxTimes: 6,
+                mult: 1,
             },
 
             mult: 1,
@@ -132,7 +135,10 @@ function nextRound() {
     updateGridDices("p_grid")
     updateGridDices("e_grid")
 
-    if (data.round == 20) {
+    if (data.round == 10) {
+        setPopup(POPUP.scrambler())
+        data.poison = true
+    } else if (data.round == 20) {
         setPopup(POPUP.poison())
         data.poison = true
     }
@@ -150,6 +156,17 @@ function chooseCard(p,e) {
     nextRound()
 }
 
+function tp(scramble=false) {
+    if (data.poison && !scramble) {
+        var x = Math.floor(Math.random()*8/2)
+        if (x > 3.5) return 4
+        return x
+    } else if (data.scrambler) {
+        return Math.floor(Math.random()*7/2)
+    }
+    return Math.floor(Math.random()*3)
+}
+
 function scrambleDice(grid) {
     for (let y = 1; y <= 4; y++) for (let x = 1; x <= 5; x++) {
         var id = y*10+x
@@ -162,9 +179,8 @@ function scrambleDice(grid) {
                 var gd = document.getElementById(grid+"_"+id).getBoundingClientRect()
                 createTextPopupParticle("Scrambled!",gd.x+gd.width/2,gd.y+gd.height/2,true)
                 if (gg !== undefined) if (gg.type !== "scrambler") {
-                    var tp = Math.floor(Math.random()*3)
-                    gg.type = ["normal","attack","heal"][tp]
-                    gg.energy = [1,2,2][tp]
+                    gg.type = ["normal","attack","heal","poison"][tp()]
+                    gg.energy = [1,2,2,3][tp()]
                 }
             }
         }
@@ -564,14 +580,8 @@ function spawnRandomDice(id,update=false) {
     var d = data[stringToString[id][0]]
     var s = tmp[stringToString[id][1]]
     var pos = s[Math.floor(Math.random()*s.length)]
-    var tp = data.poison ? Math.floor(Math.random()*7/2) : Math.floor(Math.random()*7/2)
 
-    grid[pos] = {pos: pos, value: randomInt(d.min_s,d.max_s), type: ["normal","attack","heal","poison"][tp], energy: [1,2,2,3][tp]}
-
-    /*if (d.cards.includes('d7') && Math.random() < .15) { // 
-        grid[pos].type = "scrambler"
-        grid[pos].energy = 2
-    }*/
+    grid[pos] = {pos: pos, value: randomInt(d.min_s,d.max_s), type: ["normal","attack","heal","scrambler","poison"][tp()], energy: [1,2,2,2,3][tp()]}
 
     if (d.cards.includes('m5') && grid[pos].type == "normal") grid[pos].energy = 0
 

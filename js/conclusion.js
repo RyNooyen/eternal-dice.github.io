@@ -13,6 +13,10 @@ const POPUP = {
     Are you sure you want to give up your turn? You have unspent energy.<br>
     <button onclick="removePopup();pass()">YES</button><button onclick="removePopup()">NO</button>
     `,
+    scrambler: _ =>`
+    Template
+    <button onclick="removePopup()">Okay!</button>
+    `,
     poison: _ =>`
     Template
     <button onclick="removePopup()">Okay!</button>
@@ -30,6 +34,7 @@ const POPUP = {
     Minimum & maximum number of sides have changed to add a softcap-like value called progress.<br>
     For every 75 sides, the amount of progress to get a side increments.<br>
     For example, if you have 30 of a side, one progress is needed and if you have 75 of a side, two progress is needed.<br><br>
+    You will unlock new dice as you go along, helping you fight against the enemy.<br><br>
     <button onclick="removePopup();start()">Okay!</button>
     `,
 }

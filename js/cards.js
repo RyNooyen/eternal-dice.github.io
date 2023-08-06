@@ -1,3 +1,5 @@
+let reverse = x => x != 'player' ? 'player' : 'enemy'
+
 const CARDS = {
     m1: [
         "Healthy Multiplier",
@@ -179,17 +181,24 @@ const CARDS = {
         x=>data[x].health <= 5000,
         x=>{data[x].health *= 1.3; if (data[x].maxHealth) data[x].maxHealth *= 1.3}
     ],
-    f8: [
-        "Clear your mind",
-        x=>`Clears your dice grid`,
-        x=>true,
-        x=>{
-            data.p_grid = {}
-            updateAvSlots("p_grid")
-            updateGridDices("p_grid")
-        }
+    f8_1: [
+        "Thicker Poison",
+        x=>`Increases ${['your',"enemy's"][x]} poison damage multiplier by <b class='green'>0.1</b>`,
+        x=>data.poison && data[x].poison.mult < 2,
+        x=>{data[x].poison.mult += .1}
     ],
-    //f9-10 (11?) poison-based
+    f8_2: [
+        "Concentrated Poison",
+        x=>`Decreases ${['your',"enemy's"][x]} time poison is spread across by <b class='green'>1</b>`,
+        x=>data.poison && data[x].poison.maxTimes > 3,
+        x=>{data[x].poison.maxTimes -= 1}
+    ],
+    f8_3: [
+        "Diluted Poison",
+        x=>`Increases ${['enemy\'s',"your"][x]} time poison is spread across by <b class='red'>1</b>`,
+        x=>data.poison && data[reverse(x)].poison.maxTimes < 8,
+        x=>{data[reverse(x)].poison.maxTimes += 1}
+    ],
 
     g1: [
         "Transplant",
@@ -197,11 +206,22 @@ const CARDS = {
         x=>Math.random()<1/4 && data[x].health > 1000,
         x=>{
             var a = x
-            var b = x != 'player' ? 'player' : 'enemy'
+            var b = reverse(x)
             data[a].health += data[b].health/3
             if (a == 'enemy' && data[a].maxHealth < data[a].health) data[a].maxHealth = data[a].health
             data[b].health -= data[b].health/3
             if (b == 'enemy') data[b].maxHealth -= data[b].maxHealth/3
+        },
+        "color: lime"
+    ],
+    g2: [
+        "Clear your mind",
+        x=>`Clears your dice grid`,
+        x=>Math.random()<1/4 && x=='player',
+        x=>{
+            data.p_grid = {}
+            updateAvSlots("p_grid")
+            updateGridDices("p_grid")
         },
         "color: lime"
     ],
