@@ -156,22 +156,22 @@ br {
 .picked_dice.attack,
 .grid-dice.attack {
     border-style: solid;
-    border-color: #440000;
+    border-color: #400;
     background-color: #c00;
+}
+
+.picked_dice.swap,
+.grid-dice.swap {
+    border-style: solid;
+    border-color: #442a00;
+    background-color: #c70;
 }
 
 .picked_dice.heal,
 .grid-dice.heal {
     border-style: solid;
-    border-color: #004400;
+    border-color: #040;
     background-color: #0a0;
-}
-
-.picked_dice.poison,
-.grid-dice.poison {
-    border-style: solid;
-    border-color: #440044;
-    background-color: #90c;
 }
 
 .picked_dice.scrambler,
@@ -179,6 +179,13 @@ br {
     border-style: solid;
     border-color: #004;
     background-color: #00c;
+}
+
+.picked_dice.poison,
+.grid-dice.poison {
+    border-style: solid;
+    border-color: #406;
+    background-color: #90c;
 }
 
 #conclusion {

@@ -157,6 +157,8 @@ function chooseCard(p,e) {
 }
 
 function tpf(scramble=false) {
+    if (!scramble && Math.random() < 1/4 /* make 1 in 250 after test */) return "swap"
+
     if (data.poison && !scramble) {
         var x = Math.random()*8/2
         if (x > 3.5) return 4
@@ -543,7 +545,7 @@ function updateGridDices(id) {
 
         if (gd) {
             if (gd.type != "normal") g.innerHTML += `<img draggable="false" src='images/${gd.type}.png'>`
-            if (gd.value < 10) g.innerHTML += `<img draggable="false" src='images/D${gd.value}.png'>`
+            if (gd.value < 10 && gd.type != "swap") g.innerHTML += `<img draggable="false" src='images/D${gd.value}.png'>`
         }
     }
 
@@ -583,7 +585,11 @@ function spawnRandomDice(id,update=false) {
     var pos = s[Math.floor(Math.random()*s.length)]
 
     var tp = tpf()
-    grid[pos] = {pos: pos, value: randomInt(d.min_s,d.max_s), type: ["normal","attack","heal","scrambler","poison"][tp], energy: [1,2,2,2,3][tp]}
+    if (tp == 'swap') {
+        grid[pos] = {pos: pos, value: 1, type: "swap", energy: 2}
+    } else {
+        grid[pos] = {pos: pos, value: randomInt(d.min_s,d.max_s), type: ["normal","attack","heal","scrambler","poison"][tp], energy: [1,2,2,2,3][tp]}
+    }
 
     if (d.cards.includes('m5') && grid[pos].type == "normal") grid[pos].energy = 0
 
