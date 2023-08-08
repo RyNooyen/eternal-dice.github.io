@@ -284,6 +284,11 @@ function makeMove(move="player") {
                 }
                 dmg += p
             }
+            else if (dice.type == "swap") {
+                var deref = JSON.parse(JSON.stringify(data.p_grid))
+                data.p_grid = data.e_grid
+                data.e_grid = deref
+            }
             else if (dice.type == "heal") {
                 d.health += p
                 if (d.cards.includes("m1")) {
