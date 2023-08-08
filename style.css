@@ -163,8 +163,8 @@ br {
 .picked_dice.swap,
 .grid-dice.swap {
     border-style: solid;
-    border-color: #442a00;
-    background-color: #c70;
+    border-color: #442e00;
+    background-color: #e7a900;
 }
 
 .picked_dice.heal,
