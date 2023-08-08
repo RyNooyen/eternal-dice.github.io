@@ -197,12 +197,20 @@ br {
     top: -50%;
 }
 
+.red {
+    color: red;
+}
+.orange {
+    color: orange;
+}
+.blue {
+    color: royalblue;
+}
 .green {
     color: lime;
 }
-
-.red {
-    color: red;
+.purple {
+    color: blueviolet;
 }
 
 .card {
