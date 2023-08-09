@@ -280,7 +280,7 @@ function makeMove(move="player") {
             if (dice.type == "attack") {
                 od.health = Math.max(od.health-p,0)
                 if (od.cards.includes("m1")) {
-                    od.mult = Math.max((Math.log(data[x].health) / Math.log(50)) + 1,1)
+                    od.mult = Math.max((Math.log(od.health) / Math.log(50)) + 1,1)
                 }
                 dmg += p
             }
@@ -292,7 +292,7 @@ function makeMove(move="player") {
             else if (dice.type == "heal") {
                 d.health += p
                 if (d.cards.includes("m1")) {
-                    d.mult = Math.max((Math.log(data[x].health) / Math.log(50)) + 1,1)
+                    d.mult = Math.max((Math.log(d.health) / Math.log(50)) + 1,1)
                 }
                 heal += p
             }
