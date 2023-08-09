@@ -337,6 +337,7 @@ function makeMove(move="player") {
         d.pick = [0,0]
         d.pickStep = 0
         d.product = 1
+        d.mult = Math.max(d.mult,1) //make sure it doesn't kill itself
 
         if (dmg > 0) {
             createTextPopupParticle(`<span class="red">${crit+"-"+format(dmg)}</span>`,oh.x+oh.width/2,oh.y)
