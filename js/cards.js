@@ -237,12 +237,12 @@ const CARDS = {
 
     c1: [
         "Cursed Multiplier",
-        x=>`Multiplies both of your side progress by <b class="green">2</b>, but your multiplier is divided by <b class="red">4</b>`,
+        x=>`Multiplies both of ${['your',"enemy's"][x]} side progress by <b class="green">2</b>, but your multiplier is divided by <b class="red">4</b>`,
         x=>x=="player"&&Math.random()<1/4,
         x=>{
             data[x].min_s_prog *= 2
             data[x].min_s_prog *= 2
-            progCheck()
+            progCheck(x)
 
             data[x].mult /= 4
         },
