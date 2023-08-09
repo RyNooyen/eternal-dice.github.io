@@ -22,8 +22,9 @@ const POPUP = {
     <button onclick="removePopup()">Okay!</button>
     `,
     infohub: _=>`
-    Welcome to the info hub!<br><br>
-    <button onclick="setPopup(POPUP.infobasic())">Basic</button> <button onclick="setPopup(POPUP.infodice())">Dices</button><br>
+    Welcome to the info hub!<br>
+    Here you can read on how to play the game, and other things in it!<br><br>
+    <button onclick="setPopup(POPUP.infobasic())">Important</button> <button onclick="setPopup(POPUP.infodice())">Dices</button><br>
     <button onclick="removePopup()">Exit</button>
     `,
     infobasic: _=>`
