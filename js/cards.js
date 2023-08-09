@@ -225,6 +225,15 @@ const CARDS = {
         },
         "color: lime"
     ],
+    g3: [
+        "Multiplied Mayhem",
+        x=>`Multiplies ${['your',"enemy's"][x]} current multiplier by <b class="green">1.25</b>`,
+        x=>Math.random()<1/4 && !data[x].cards.includes('m1'),
+        x=>{
+            data[x].mult *= 1.25
+        },
+        "color: lime"
+    ],
 
     c1: [
         "Cursed Multiplier",
