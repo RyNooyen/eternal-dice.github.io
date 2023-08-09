@@ -157,7 +157,7 @@ function chooseCard(p,e) {
 }
 
 function tpf(scramble=false) {
-    if (!scramble && Math.random() < 1/250) return "swap"
+    if (!scramble && Math.random() < 1/384) return "swap"
 
     if (data.poison && !scramble) {
         var x = Math.random()*8/2

@@ -39,7 +39,7 @@ const POPUP = {
     `,
     infodice: _=>`
     <b class="red">Damage Dice</b> - Deals damage to the enemy.<br>
-    <b class="orange">Swap Dice</b> - Swaps all your dice with the enemy's dice. You have a 1 in 250 chance of getting this.<br>
+    <b class="orange">Swap Dice</b> - Swaps all your dice with the enemy's dice. You have a 1 in 384 chance of getting this.<br>
     <b class="green">Heal Dice</b> - Gives yourself health.<br>
     <b class="blue">Scrambler Dice</b> - Changes all the dice around it. Unlocked at Round 10.<br>
     <b class="purple">Poison Dice</b> - Spreads across damage over dice usage. Unlocked at Round 20.<br>
